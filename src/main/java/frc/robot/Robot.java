@@ -44,7 +44,7 @@ public class Robot extends TimedRobot {
     // Reuse buffer
     // Default to a length of 60, start empty output
     // Length is expensive to set, so only set it once, then just update data
-    m_ledBuffer = new AddressableLEDBuffer(60);
+    m_ledBuffer = new AddressableLEDBuffer(30);
     m_led.setLength(m_ledBuffer.getLength());
 
     // Set the data
@@ -106,16 +106,41 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
 
-    controller = new XboxController(1);
+    controller = new XboxController(0);
 
     if (controller.getAButtonPressed()) {
 
-      for (var i = 0; i < m_ledBuffer.getLength(); i++) {
-        // Sets the specified LED to the RGB values for red
-        m_ledBuffer.setRGB(i, 255, 0, 0);
-     }
+      if (true) {
+
+        for (var a = 0; a < (m_ledBuffer.getLength()) - 20; a++) {
+
+         // Sets the specified LED to the RGB values for red
+         m_ledBuffer.setRGB(a, 255, 0, 0);
+
+        }
      
-     m_led.setData(m_ledBuffer);
+       m_led.setData(m_ledBuffer);
+
+        for (var b = 10; b < m_ledBuffer.getLength() - 10; b++) {
+
+          // Sets the specified LED to the RGB values for red
+         m_ledBuffer.setRGB(b, 0, 255, 0);
+
+        }
+    
+       m_led.setData(m_ledBuffer);
+
+        for (var c = 20; c < m_ledBuffer.getLength(); c++) {
+
+         // Sets the specified LED to the RGB values for red
+         m_ledBuffer.setRGB(c, 0, 0, 255);
+
+       }
+  
+       m_led.setData(m_ledBuffer);
+
+      }
+
       
 		}
 
