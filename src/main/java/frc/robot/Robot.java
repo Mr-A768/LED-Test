@@ -4,8 +4,7 @@
  
 package frc.robot;
  
- 
-     
+ //Message 
  
 import edu.wpi.first.wpilibj.AddressableLED;
 import edu.wpi.first.wpilibj.AddressableLEDBuffer;
@@ -30,10 +29,17 @@ public class Robot extends TimedRobot {
   public static AddressableLED m_led;
   public static AddressableLEDBuffer m_ledBuffer;
  
-  int x = 29;
-  int x2 = 30;
-  int y = 0;
+  int r = 256;
+  int g = 0;
+  int b = 0;
+   
+  int rr;
+  int gg;
+  int bb;
  
+  int holdSpeed = 16;
+ 
+  int count = 0;
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -118,50 +124,74 @@ public class Robot extends TimedRobot {
  
     controller = new XboxController(0);
  
-    for (var bg = 0; bg < (m_ledBuffer.getLength()); bg++) {
+    if (count<40) {
  
-      // Sets the specified LED to the RGB values for red
-      m_ledBuffer.setRGB(bg, 255, 255, 255);
+     if (r == 256 && g <= 256 && b == 0){
  
-    }
- 
-    if (controller.getAButton()) {
- 
-      if (x < 15){
-        x += 15;
-      }
- 
-      if (x2 < 16){
-        x2 += 15;
-      }
- 
-      if (y > 15){
-        y -= 15;
-      }
-   
-      for (var a = 0; a < (m_ledBuffer.getLength()) - x; a++) {
- 
-       // Sets the specified LED to the RGB values for red
-       m_ledBuffer.setRGB(a, 255, 0, 255);
+      g += holdSpeed;
  
      }
  
-     for (var b = 0; b < (m_ledBuffer.getLength()) - x2 ; b++) {
+     if (r >= 0 && g == 256 && b == 0){
  
-      // Sets the specified LED to the RGB values for red
-      m_ledBuffer.setRGB(b, 255, 255, 255);
+      r -= holdSpeed;
  
-    }
+     }
+ 
+     if (r == 0 && g == 256 && b <= 256){
+ 
+      b += holdSpeed;
+ 
+     }
+ 
+     if (r == 0 && g >= 0 && b == 256){
+ 
+      g -= holdSpeed;
+ 
+     }
+ 
+     if (r <= 256 && g == 0 && b == 256){
+ 
+      r += holdSpeed;
+ 
+     }
+ 
+     if (r == 256 && g == 0 && b >= 0){
+ 
+      b -= holdSpeed;
+ 
+     }
+ 
+     if (r == 256) {
+       rr = 255;
+     } else {
+       rr = r;
+     }
+ 
+     if (g == 256) {
+        gg = 255;
+      } else {
+        gg = g;
+      }
+ 
+      if (b == 256) {
+        bb = 255;
+      } else {
+        bb = b;
+      }
+ 
+ 
+      for (var bg = 0; bg < (m_ledBuffer.getLength()); bg++) {
+ 
+        // Sets the specified LED to the RGB values for red
+        m_ledBuffer.setRGB(bg, rr, gg, bb);
+ 
+      }
  
       m_led.setData(m_ledBuffer);
- 
-      x --;
-      x2 --;
-      y ++;
- 
      
-    }
- 
+      count++;
+    }  
  
  
   }
