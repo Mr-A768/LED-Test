@@ -33,10 +33,12 @@ public class Robot extends TimedRobot {
   int x = 29;
   int x2 = 30;
   int y = 0;
- 
+
+  int count=0; 
+
   /**
    * This function is run when the robot is first started up and should be used for any
-   * initialization code.
+   * initialization code
    */
   @Override
   public void robotInit() {
@@ -125,8 +127,9 @@ public class Robot extends TimedRobot {
  
     }
  
+    //if (count<50) {
     if (controller.getAButton()) {
- 
+
       if (x < 15){
         x += 15;
       }
@@ -157,12 +160,18 @@ public class Robot extends TimedRobot {
  
       x --;
       x2 --;
-      y ++;
- 
-     
+      y ++; 
+
     }
- 
- 
+    //else if(count>100){
+    //  count=0; 
+    //}
+    //else{
+
+    //}
+
+
+    count++; 
  
   }
  
