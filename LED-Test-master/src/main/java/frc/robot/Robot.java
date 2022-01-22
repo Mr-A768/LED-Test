@@ -163,15 +163,15 @@ public class Robot extends TimedRobot {
       y ++; 
 
     }
-    //else if(count>100){
-    //  count=0; 
-    //}
+    else if(count>100){
+      count=0; 
+    }
     //else{
-
+    //  m_ledBuffer.setRGB(0, 0, 0, 0);
     //}
 
 
-    count++; 
+    //count++; 
  
   }
  
