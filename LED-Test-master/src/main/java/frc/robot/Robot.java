@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.AddressableLEDBuffer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.subsystems.ledSubsystem;
 import edu.wpi.first.wpilibj.XboxController;
 import com.ctre.phoenix.CANifier;
  
@@ -29,12 +30,8 @@ public class Robot extends TimedRobot {
   public static XboxController controller;
   public static AddressableLED m_led;
   public static AddressableLEDBuffer m_ledBuffer;
- 
-  int x = 29;
-  int x2 = 30;
-  int y = 0;
+  public ledSubsystem ledSubsystem = new ledSubsystem(); 
 
-  int count=0; 
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -60,8 +57,9 @@ public class Robot extends TimedRobot {
     m_led.setData(m_ledBuffer);
     m_led.start();
  
+    ledSubsystem.setLEDVar(m_led, m_ledBuffer); 
+
   }
- 
   /**
    * This function is called every robot packet, no matter the mode. Use this for items like
    * diagnostics that you want ran during disabled, autonomous, teleoperated and test.
@@ -119,65 +117,9 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
  
     controller = new XboxController(0);
- 
-    for (var bg = 0; bg < (m_ledBuffer.getLength()); bg++) {
- 
-      // Sets the specified LED to the RGB values for red
-      m_ledBuffer.setRGB(bg, 255, 255, 255);
- 
-    }
- 
-    //if (count<50) {
-    if (controller.getAButton()) {
 
-      if (x < 15){
-        x += 15;
-      }
- 
-      if (x2 < 16){
-        x2 += 15;
-      }
- 
-      if (y > 15){
-        y -= 15;
-      }
-   
-      for (var a = 0; a < (m_ledBuffer.getLength()) - x; a++) {
- 
-       // Sets the specified LED to the RGB values for red
-       m_ledBuffer.setRGB(a, 255, 0, 255);
- 
-     }
- 
-     for (var b = 0; b < (m_ledBuffer.getLength()) - x2 ; b++) {
- 
-      // Sets the specified LED to the RGB values for red
-      m_ledBuffer.setRGB(b, 255, 255, 255);
- 
-    }
- 
-      m_led.setData(m_ledBuffer);
- 
-      x --;
-      x2 --;
-      y ++; 
-
-    }
-    else if(count>100){
-      count=0; 
-    }
-    //else{
-    //  m_ledBuffer.setRGB(0, 0, 0, 0);
-    //}
-
-
-    //count++; 
- 
   }
- 
- 
- 
- 
+  
   @Override
   public void testInit() {
     // Cancels all running commands at the start of test mode.
@@ -187,6 +129,6 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during test mode. */
   @Override
   public void testPeriodic() {}
+
 }
  
-
