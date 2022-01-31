@@ -4,7 +4,7 @@
  
 package frc.robot;
  
-//version 1.1.6?  
+//version 1.4.1  
      
  
 import edu.wpi.first.wpilibj.AddressableLED;
@@ -43,21 +43,21 @@ public class Robot extends TimedRobot {
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
  
-    m_led = new AddressableLED(9);
+    /*m_led = new AddressableLED(9);
  
    
  
     // Reuse buffer
     // Default to a length of 60, start empty output
     // Length is expensive to set, so only set it once, then just update data
-    m_ledBuffer = new AddressableLEDBuffer(30);
+    m_ledBuffer = new AddressableLEDBuffer(2);
     m_led.setLength(m_ledBuffer.getLength());
  
     // Set the data
     m_led.setData(m_ledBuffer);
-    m_led.start();
+    m_led.start();*/
  
-    ledSubsystem.setLEDVar(m_led, m_ledBuffer); 
+    //ledSubsystem.setLEDVar(m_led, m_ledBuffer); 
 
   }
   /**
