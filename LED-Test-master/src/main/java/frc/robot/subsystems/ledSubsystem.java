@@ -1,3 +1,5 @@
+//1.5.2
+
 // Copyright (c) FIRST and other WPILib contributors.
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
@@ -79,12 +81,14 @@ public class ledSubsystem extends SubsystemBase {
     counter++;
   }
 
-  public void nightRider(int red, int green, int blue) {
-    if (counter == 120) {
+  public void knightRider(int red, int green, int blue) {
+    if (counter == 2){
+      //counter == 2.4 * (m_ledBuffer.getLength())) {
       m_timer.reset();
       m_timer.start();
       solid(0, 0, 0);
       kitt++;
+      counter = 0;
     }
 
     int num = (int) (10 * m_timer.get());
@@ -99,15 +103,23 @@ public class ledSubsystem extends SubsystemBase {
       // Sets the specified LED to the RGB values for red
       m_ledBuffer.setRGB(j, 0, 0, 0);
 
-    } else {
+    } else if (kitt % 2 == 1) {
 
-      int i = (m_ledBuffer.getLength() - (num % m_ledBuffer.getLength()))+1;
+      int k = (m_ledBuffer.getLength() - (num % m_ledBuffer.getLength()))-0;
       // Sets the specified LED to the RGB values for red
-      m_ledBuffer.setRGB(i, red, green, blue);
+      m_ledBuffer.setRGB(k, red, green, blue);
 
-      int j = (m_ledBuffer.getLength() - (num % m_ledBuffer.getLength()));
-      // Sets the specified LED to the RGB values for red
-      m_ledBuffer.setRGB(j, 0, 0, 0);
+      //int j = (m_ledBuffer.getLength() - (num % m_ledBuffer.getLength()));
+      //// Sets the specified LED to the RGB values for red
+      //m_ledBuffer.setRGB(j, 0, 0, 0);
+
+      // int i = (num % m_ledBuffer.getLength()) + 1;
+      // // Sets the specified LED to the RGB values for red
+      // m_ledBuffer.setRGB(i, red, green, blue);
+
+      // int j = (num % m_ledBuffer.getLength());
+      // // Sets the specified LED to the RGB values for red
+      // m_ledBuffer.setRGB(j, 0, 0, 0);
 
     }
 
