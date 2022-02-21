@@ -49,15 +49,14 @@ public class ledSubsystem extends SubsystemBase {
   }
 
   public void auto(){
-    m_timer.reset();
-    m_timer.start();
-    if (m_timer.get() <= 5){
+    
+    if (Timer.getMatchTime() <= 5){
       blink(0, 200, 0, 1);
     }
-    if (m_timer.get() <= 10){
+    if (Timer.getMatchTime() <= 10){
       blink(200, 200, 0, 1);
     }
-    if (m_timer.get() <= 15){
+    if (Timer.getMatchTime() <= 15){
       blink(200, 0, 0, 1);
     }
   }
