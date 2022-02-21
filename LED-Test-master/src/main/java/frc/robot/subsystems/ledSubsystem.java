@@ -48,6 +48,20 @@ public class ledSubsystem extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 
+  public void auto(){
+    m_timer.reset();
+    m_timer.start();
+    if (m_timer.get() <= 5){
+      blink(0, 200, 0, 1);
+    }
+    if (m_timer.get() <= 10){
+      blink(200, 200, 0, 1);
+    }
+    if (m_timer.get() <= 15){
+      blink(200, 0, 0, 1);
+    }
+  }
+
   public void solid(int red, int green, int blue) {
 
     for (int i = 0; i < (m_ledBuffer.getLength()); i++) {
@@ -79,6 +93,48 @@ public class ledSubsystem extends SubsystemBase {
     m_led.setData(m_ledBuffer);
     m_led.start();
     counter++;
+  }
+
+  public void tripleOrbit(int red, int green, int blue, int red_bg, int green_bg, int blue_bg) {
+    int num = (int) (8 * m_timer.get());
+
+    if (num % 3 == 0) {
+      for (int e = 0; e < (m_ledBuffer.getLength()); e += 3) {
+        m_ledBuffer.setRGB(e, red, green, blue);
+      }
+      for (int o = 1; o < (m_ledBuffer.getLength()); o += 3) {
+        m_ledBuffer.setRGB(o, red_bg, green_bg, blue_bg);
+      }
+      for (int o = 2; o < (m_ledBuffer.getLength()); o += 3) {
+        m_ledBuffer.setRGB(o, red_bg, green_bg, blue_bg);
+      }
+
+    } else if (num % 3 == 1) {
+      for (int o = 0; o < (m_ledBuffer.getLength()); o += 3) {
+        m_ledBuffer.setRGB(o, red_bg, green_bg, blue_bg);
+      }
+      for (int o = 1; o < (m_ledBuffer.getLength()); o += 3) {
+        m_ledBuffer.setRGB(o, red_bg, green_bg, blue_bg);
+      }
+      for (int e = 2; e < (m_ledBuffer.getLength()); e += 3) {
+        m_ledBuffer.setRGB(e, red, green, blue);
+      }
+
+    } else if (num % 3 == 2) {
+      for (int o = 0; o < (m_ledBuffer.getLength()); o += 3) {
+        m_ledBuffer.setRGB(o, red_bg, green_bg, blue_bg);
+      }
+      for (int e = 1; e < (m_ledBuffer.getLength()); e += 3) {
+        m_ledBuffer.setRGB(e, red, green, blue);
+      }
+      for (int o = 2; o < (m_ledBuffer.getLength()); o += 3) {
+        m_ledBuffer.setRGB(o, red_bg, green_bg, blue_bg);
+      }
+
+    }
+
+    m_led.setData(m_ledBuffer);
+    m_led.start();
   }
 
   public void knightRider(int red, int green, int blue) {
@@ -129,8 +185,8 @@ public class ledSubsystem extends SubsystemBase {
     counter++;
   }
 
-  public void blink(int red, int green, int blue) {
-    int num = (int) (4 * m_timer.get());
+  public void blink(int red, int green, int blue, int blinksPerSecond) {
+    int num = (int) (2 * (blinksPerSecond) * m_timer.get());
 
     if (num % 2 == 0) {
       for (int i = 0; i < (m_ledBuffer.getLength()); i++) {
