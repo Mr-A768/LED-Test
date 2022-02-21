@@ -23,7 +23,7 @@ public class ledCommand extends CommandBase {
   @Override
   public void initialize() {
    ledSubsystem.setLength();
-   ledSubsystem.solid(200, 80, 100);
+   //ledSubsystem.solid(200, 80, 100);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -34,6 +34,7 @@ public class ledCommand extends CommandBase {
     //ledSubsystem.alt();
     //ledSubsystem.rainbow();
     //ledSubsystem.auto();
+    ledSubsystem.tripleOrbit(200,0,200,0,150,200);
   }
 
   // Called once the command ends or is interrupted.

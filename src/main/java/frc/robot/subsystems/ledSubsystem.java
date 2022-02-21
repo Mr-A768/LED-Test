@@ -17,7 +17,7 @@ public class ledSubsystem extends SubsystemBase {
   }
 
   public static AddressableLED m_led = new AddressableLED(9);
-  public static AddressableLEDBuffer m_ledBuffer = new AddressableLEDBuffer(10);
+  public static AddressableLEDBuffer m_ledBuffer = new AddressableLEDBuffer(169);
   public final Timer m_timer = new Timer();
 
   int count = 0;
@@ -55,7 +55,7 @@ public class ledSubsystem extends SubsystemBase {
       blink(0, 200, 0, 1);
     }
     if (m_timer.get() <= 10 && m_timer.get() > 5) {
-      blink(200, 200, 0, 1);
+      blink(247, 169, 0, 1);
     }
     if (m_timer.get() <= 15 && m_timer.get() > 10) {
       blink(200, 0, 0, 1);
