@@ -1,4 +1,3 @@
-
 //1.5.2
 
 // Copyright (c) FIRST and other WPILib contributors.
@@ -18,7 +17,7 @@ public class ledSubsystem extends SubsystemBase {
   }
 
   public static AddressableLED m_led = new AddressableLED(9);
-  public static AddressableLEDBuffer m_ledBuffer = new AddressableLEDBuffer(50);
+  public static AddressableLEDBuffer m_ledBuffer = new AddressableLEDBuffer(10);
   public final Timer m_timer = new Timer();
 
   int count = 0;
@@ -50,16 +49,20 @@ public class ledSubsystem extends SubsystemBase {
   }
 
   public void auto() {
+    m_timer.start();
 
-    if (Timer.getMatchTime() <= 5) {
+    if (m_timer.get() <= 5 && m_timer.get() >= 0) {
       blink(0, 200, 0, 1);
     }
-    if (Timer.getMatchTime() <= 10) {
+    if (m_timer.get() <= 10 && m_timer.get() > 5) {
       blink(200, 200, 0, 1);
     }
-    if (Timer.getMatchTime() <= 15) {
+    if (m_timer.get() <= 15 && m_timer.get() > 10) {
       blink(200, 0, 0, 1);
     }
+
+    m_led.setData(m_ledBuffer);
+    m_led.start();
   }
 
   public void solid(int red, int green, int blue) {

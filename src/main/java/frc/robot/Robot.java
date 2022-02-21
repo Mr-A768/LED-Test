@@ -43,8 +43,10 @@ public class Robot extends TimedRobot {
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
  
+    ledSubsystem.solid(200, 200, 200);
+
     /*m_led = new AddressableLED(9);
- 
+    
    
  
     // Reuse buffer
