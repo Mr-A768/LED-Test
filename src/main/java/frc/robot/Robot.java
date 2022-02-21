@@ -27,7 +27,7 @@ public class Robot extends TimedRobot {
  
   private RobotContainer m_robotContainer;
  
-  public static XboxController controller;
+  //public static XboxController controller;
   public static AddressableLED m_led;
   public static AddressableLEDBuffer m_ledBuffer;
   public ledSubsystem ledSubsystem = new ledSubsystem(); 
@@ -87,7 +87,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     m_autonomousCommand = m_robotContainer.getAutonomousCommand();
-    ledSubsystem.auto();
+    
     // schedule the autonomous command (example)
     if (m_autonomousCommand != null) {
       m_autonomousCommand.schedule();
@@ -116,7 +116,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
  
-    controller = new XboxController(0);
+    //controller = new XboxController(0);
 
   }
   

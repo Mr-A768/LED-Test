@@ -1,10 +1,11 @@
+
 //1.5.2
 
 // Copyright (c) FIRST and other WPILib contributors.
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package main.java.frc.robot.subsystems;
+package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.AddressableLEDBuffer;
@@ -48,15 +49,15 @@ public class ledSubsystem extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 
-  public void auto(){
-    
-    if (Timer.getMatchTime() <= 5){
+  public void auto() {
+
+    if (Timer.getMatchTime() <= 5) {
       blink(0, 200, 0, 1);
     }
-    if (Timer.getMatchTime() <= 10){
+    if (Timer.getMatchTime() <= 10) {
       blink(200, 200, 0, 1);
     }
-    if (Timer.getMatchTime() <= 15){
+    if (Timer.getMatchTime() <= 15) {
       blink(200, 0, 0, 1);
     }
   }
@@ -137,8 +138,8 @@ public class ledSubsystem extends SubsystemBase {
   }
 
   public void knightRider(int red, int green, int blue) {
-    if (counter == 2){
-      //counter == 2.4 * (m_ledBuffer.getLength())) {
+    if (counter == 2) {
+      // counter == 2.4 * (m_ledBuffer.getLength())) {
       m_timer.reset();
       m_timer.start();
       solid(0, 0, 0);
@@ -160,13 +161,13 @@ public class ledSubsystem extends SubsystemBase {
 
     } else if (kitt % 2 == 1) {
 
-      int k = (m_ledBuffer.getLength() - (num % m_ledBuffer.getLength()))-0;
+      int k = (m_ledBuffer.getLength() - (num % m_ledBuffer.getLength())) - 0;
       // Sets the specified LED to the RGB values for red
       m_ledBuffer.setRGB(k, red, green, blue);
 
-      //int j = (m_ledBuffer.getLength() - (num % m_ledBuffer.getLength()));
+      // int j = (m_ledBuffer.getLength() - (num % m_ledBuffer.getLength()));
       //// Sets the specified LED to the RGB values for red
-      //m_ledBuffer.setRGB(j, 0, 0, 0);
+      // m_ledBuffer.setRGB(j, 0, 0, 0);
 
       // int i = (num % m_ledBuffer.getLength()) + 1;
       // // Sets the specified LED to the RGB values for red
