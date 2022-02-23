@@ -51,14 +51,14 @@ public class ledSubsystem extends SubsystemBase {
   public void auto() {
     m_timer.start();
 
-    if (m_timer.get() <= 5 && m_timer.get() >= 0) {
-      blink(0, 200, 0, 1);
-    }
-    if (m_timer.get() <= 10 && m_timer.get() > 5) {
-      blink(247, 169, 0, 1);
-    }
-    if (m_timer.get() <= 15 && m_timer.get() > 10) {
+    if (Timer.getMatchTime() <= 5 && Timer.getMatchTime() >= 0) {
       blink(200, 0, 0, 1);
+    }
+    if (Timer.getMatchTime() <= 10 && Timer.getMatchTime() > 5) {
+      blink(200, 130, 0, 1);
+    }
+    if (Timer.getMatchTime() <= 15 && Timer.getMatchTime() > 10) {
+      blink(0, 200, 0, 1);
     }
 
     m_led.setData(m_ledBuffer);
@@ -328,5 +328,76 @@ public class ledSubsystem extends SubsystemBase {
 
     m_led.setData(m_ledBuffer);
     m_led.start();
+  }
+
+  public void teamNum() {
+    //if (counter == 120) {
+    //  m_timer.reset();
+    //  m_timer.start();
+    //  counter = 0;
+    //  solid(0, 0, 0);
+    //}
+    int num = (int) (1 * m_timer.get());
+
+    for (int i = 0; i < (m_ledBuffer.getLength()); i++) {
+      // Sets the specified LED to the RGB values for red
+      m_ledBuffer.setRGB(i, 0, 50, 200);
+    }
+
+    int a = (num % m_ledBuffer.getLength()) + 1;
+    // Sets the specified LED to the RGB values for red
+    m_ledBuffer.setRGB(a, 100, 100, 100);
+
+    int b = (num % m_ledBuffer.getLength()) + 2;
+    // Sets the specified LED to the RGB values for red
+    m_ledBuffer.setRGB(b, 100, 100, 100);
+
+    int c = (num % m_ledBuffer.getLength()) + 3;
+    // Sets the specified LED to the RGB values for red
+    m_ledBuffer.setRGB(c, 0, 0, 0);
+
+    int d = (num % m_ledBuffer.getLength()) + 4;
+    // Sets the specified LED to the RGB values for red
+    m_ledBuffer.setRGB(d, 100, 100, 100);
+
+    int e = (num % m_ledBuffer.getLength()) + 5;
+    // Sets the specified LED to the RGB values for red
+    m_ledBuffer.setRGB(e, 0, 0, 0);
+
+    int f = (num % m_ledBuffer.getLength()) + 6;
+    // Sets the specified LED to the RGB values for red
+    m_ledBuffer.setRGB(f, 100, 100, 100);
+
+    int g = (num % m_ledBuffer.getLength()) + 7;
+    // Sets the specified LED to the RGB values for red
+    m_ledBuffer.setRGB(g, 0, 0, 0);
+
+    int h = (num % m_ledBuffer.getLength()) + 8;
+    // Sets the specified LED to the RGB values for red
+    m_ledBuffer.setRGB(h, 100, 100, 100);
+
+    int i = (num % m_ledBuffer.getLength()) + 9;
+    // Sets the specified LED to the RGB values for red
+    m_ledBuffer.setRGB(i, 100, 100, 100);
+
+    int j = (num % m_ledBuffer.getLength()) + 10;
+    // Sets the specified LED to the RGB values for red
+    m_ledBuffer.setRGB(j, 100, 100, 100);
+
+    int k = (num % m_ledBuffer.getLength()) + 11;
+    // Sets the specified LED to the RGB values for red
+    m_ledBuffer.setRGB(k, 0, 0, 0);
+
+    //int m = (num % m_ledBuffer.getLength());
+    //// Sets the specified LED to the RGB values for red
+    //m_ledBuffer.setRGB(m, 0, 50, 200);
+
+    m_led.setData(m_ledBuffer);
+    m_led.start();
+    counter++;
+    if (counter > m_ledBuffer.getLength()){
+      num = 0;
+      counter = 0;
+    }
   }
 }
