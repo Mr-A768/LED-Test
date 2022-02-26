@@ -34,8 +34,8 @@ public class ledCommand extends CommandBase {
     //ledSubsystem.alt();
     //ledSubsystem.rainbow();
     //ledSubsystem.auto();
-    //ledSubsystem.tripleOrbit(127, 40, 0, 50, 50, 50);
-    ledSubsystem.teamNum();
+    ledSubsystem.tripleOrbit(0, 0, 100, 50, 50, 50, 16);
+    //ledSubsystem.teamNum();
   }
 
   // Called once the command ends or is interrupted.

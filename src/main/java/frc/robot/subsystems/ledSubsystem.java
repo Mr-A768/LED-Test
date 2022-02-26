@@ -98,8 +98,8 @@ public class ledSubsystem extends SubsystemBase {
     counter++;
   }
 
-  public void tripleOrbit(int red, int green, int blue, int red_bg, int green_bg, int blue_bg) {
-    int num = (int) (8 * m_timer.get());
+  public void tripleOrbit(int red, int green, int blue, int red_bg, int green_bg, int blue_bg, int blinksPerSecond) {
+    int num = (int) (blinksPerSecond * m_timer.get());
 
     if (num % 3 == 0) {
       for (int e = 0; e < (m_ledBuffer.getLength()); e += 3) {
